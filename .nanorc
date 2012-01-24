@@ -1,0 +1,37 @@
+# indentation
+set autoindent
+# regular expression searching by default
+set regexp
+# set the tab size
+set tabsize 4
+# set expand tab
+set tabstospaces
+
+include "~/.nano/asm.nanorc"
+include "~/.nano/awk.nanorc"
+include "~/.nano/cmake.nanorc"
+include "~/.nano/c.nanorc"
+include "~/.nano/css.nanorc"
+include "~/.nano/debian.nanorc"
+include "~/.nano/fortran.nanorc"
+include "~/.nano/gentoo.nanorc"
+include "~/.nano/groff.nanorc"
+include "~/.nano/html.nanorc"
+include "~/.nano/java.nanorc"
+include "~/.nano/makefile.nanorc"
+include "~/.nano/man.nanorc"
+include "~/.nano/mgp.nanorc"
+include "~/.nano/mutt.nanorc"
+include "~/.nano/nanorc.nanorc"
+include "~/.nano/objc.nanorc"
+include "~/.nano/ocaml.nanorc"
+include "~/.nano/patch.nanorc"
+include "~/.nano/perl.nanorc"
+include "~/.nano/php.nanorc"
+include "~/.nano/pov.nanorc"
+include "~/.nano/python.nanorc"
+include "~/.nano/ruby.nanorc"
+include "~/.nano/sh.nanorc"
+include "~/.nano/tcl.nanorc"
+include "~/.nano/tex.nanorc"
+include "~/.nano/xml.nanorc"
