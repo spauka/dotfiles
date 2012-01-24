@@ -1,0 +1,5 @@
+[diff]
+    color = True
+
+[merge]
+    tool = meld
