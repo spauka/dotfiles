@@ -1,0 +1,26 @@
+#export NAME='Your Full Name'
+#export EMAIL='youremail@example.net'
+
+export PAGER=less
+export EDITOR=nano
+#export EDITOR=vim
+export CVS_RSH=ssh
+export RSYNC_RSH=ssh
+export PYTHONSTARTUP=~/.pythonrc.py
+
+export LESS='FRSXQ'
+
+if which lesspipe 2>&1 >/dev/null; then
+    eval "$(lesspipe)"
+fi
+
+pathprepend ~/bin PATH
+pathprepend ~/share/man MANPATH
+pathprepend ~/lib LD_LIBRARY_PATH
+pathprepend ~/include CPATH
+
+# The current directory should never be in $PATH
+pathremove . PATH
+pathremove "" PATH
+
+ssource ~/.shell/login_local

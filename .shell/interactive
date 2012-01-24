@@ -1,0 +1,6 @@
+# if in a terminal, make other users unable to message us
+if [ -t 0 ]; then
+    mesg n
+fi
+
+ssource ~/.shell/interactive_local
