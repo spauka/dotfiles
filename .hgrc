@@ -1,0 +1,45 @@
+[extensions]
+bookmarks =
+color =
+convert =
+eol =
+extdiff =
+gpg =
+graphlog =
+highlight =
+#hggit =
+mq =
+pager =
+progress =
+rebase =
+record =
+relink =
+schemes =
+transplant =
+zeroconf =
+
+[alias]
+qstatus = status --rev -2:-1
+
+[diff]
+git = True
+
+[extdiff]
+cmd.meld = meld
+cmd.vimdiff = vimdiff
+
+[pager]
+quiet = True
+attend = diff,status,log,qdiff,blame,annotate,pdiff,glog
+
+[ui]
+username = $NAME <$EMAIL>
+
+#merge = meld
+#merge = vimdiff
+
+[web]
+allow_archive = zip bz2 gz
+pygments_style = tango
+style = coal
+
