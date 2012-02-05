@@ -2,7 +2,7 @@
 ZSH=~/.oh-my-zsh
 
 # Name of theme (see ~/.oh-my-zsh/themes/) or "random"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="flowblok"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
