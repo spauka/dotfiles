@@ -33,6 +33,9 @@ cmd.vimdiff = vimdiff
 quiet = True
 attend = diff,status,log,qdiff,blame,annotate,pdiff,glog
 
+[schemes]
+bbs = ssh://hg@bitbucket.org/
+
 [ui]
 username = $NAME <$EMAIL>
 
