@@ -15,7 +15,7 @@ if which lesspipe 2>&1 >/dev/null; then
 fi
 
 pathprepend ~/bin PATH
-pathprepend ~/share/man MANPATH
+export MANPATH=~/share/man:$MANPATH
 pathprepend ~/lib LD_LIBRARY_PATH
 pathprepend ~/include CPATH
 
