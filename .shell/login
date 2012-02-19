@@ -6,7 +6,7 @@ export EDITOR=nano
 #export EDITOR=vim
 export CVS_RSH=ssh
 export RSYNC_RSH=ssh
-export PYTHONSTARTUP=~/.pythonrc.py
+export PYTHONSTARTUP=$HOME/.pythonrc.py
 
 export LESS='FRSXQ'
 
