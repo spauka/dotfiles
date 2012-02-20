@@ -1,0 +1,17 @@
+# Custom settings for the usyd SIT machines
+
+# Proxy settings
+export http_proxy="http://www-cache.it.usyd.edu.au:8000"
+export https_proxy="http://www-cache.it.usyd.edu.au:8000"
+export ftp_proxy="http://www-cache.it.usyd.edu.au:8000"
+export no_proxy="127.0.0.1,localhost,.usyd.edu.au"
+
+# On some older machines, $INPUTRC is set.
+# if we have a ~/.inputrc, we'll unset it.
+if [ -r ~/.inputrc ]; then
+    unset INPUTRC
+fi
+
+# Load SUITS config & extra programs.
+. ~suits/pub/init.sh
+
