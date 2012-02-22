@@ -31,6 +31,19 @@ p = Popen(args=['hg', 'root'], stdin=PIPE, stdout=PIPE)
 out, _ = p.communicate('')
 new_repo = out.strip()
 
+# if this can be expressed relative to install_dir, we want to do that.
+
+def maybe_relpath(path, start):
+    rv = relpath(path, realpath(start))
+    # TODO: this is a non-portable hack
+    if rv.startswith('../'):
+        return path
+    return join(start, rv)
+
+new_repo = maybe_relpath(new_repo, install_dir)
+
+# get the current revision
+
 p = Popen(args=['hg', 'id', '-i'], stdin=PIPE, stdout=PIPE)
 out, _ = p.communicate('')
 new_version = out.strip()
@@ -60,7 +73,7 @@ out, _ = p.communicate('')
 regexp = None
 try:
     f = open(join(new_repo, '.dotfiles-ignore'), 'rU')
-except OSError:
+except (IOError, OSError), e:
     pass
 else:
     regexp = '|'.join(
@@ -85,7 +98,7 @@ for line in out.split('\0'):
         continue
 
     install_filename = join(install_dir, filename)
-    link_path = relpath(filename, dirname(install_filename))
+    link_path = relpath(join(new_repo, filename), dirname(install_filename))
 #    print install_filename, '->', link_path
 
     if status == 'A':
