@@ -32,8 +32,10 @@ export LESSCHARSET='UTF-8'
 export LESSHISTFILE='-'
 export LESSEDIT="$EDITOR ?lm+%lm. %f"
 
-if which lesspipe 2>&1 >/dev/null; then
+if which lesspipe >/dev/null 2>&1; then
     eval "$(lesspipe)"
+elif which lesspipe.sh >/dev/null 2>&1; then
+    export LESSOPEN="|lesspipe.sh %s"
 fi
 
 # Path settings
