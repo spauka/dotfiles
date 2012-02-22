@@ -1,0 +1,5 @@
+#!/bin/sh
+
+host=$1
+mac=`cat "$HOME/.local/share/wakeup/$host"`
+wakeonlan "$mac"
