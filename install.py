@@ -5,6 +5,7 @@ from os import readlink
 from os.path import (
     dirname, exists, expanduser, islink, join, lexists, realpath, relpath,
 )
+import re
 from subprocess import Popen, PIPE
 import sys
 
@@ -13,6 +14,7 @@ install_dir = expanduser('~')
 # Get the current version.
 
 version_file = join(install_dir, '.dotfiles-version')
+repo_file = join(install_dir, '.dotfiles-repo')
 
 if not exists(version_file):
     print 'Performing initial installation...'
@@ -24,6 +26,10 @@ else:
     print 'Currently installed version:', installed_version
 
 # Find changed files between the installed revision and the current revision.
+
+p = Popen(args=['hg', 'root'], stdin=PIPE, stdout=PIPE)
+out, _ = p.communicate('')
+new_repo = out.strip()
 
 p = Popen(args=['hg', 'id', '-i'], stdin=PIPE, stdout=PIPE)
 out, _ = p.communicate('')
@@ -50,6 +56,20 @@ p = Popen(
 )
 out, _ = p.communicate('')
 
+# Figure out which files we'll ignore
+regexp = None
+try:
+    f = open(join(new_repo, '.dotfiles-ignore'), 'rU')
+except OSError:
+    pass
+else:
+    regexp = '|'.join(
+        '(%s)' % line[:-1]
+        for line in f
+    )
+    regexp = re.compile(regexp)
+    f.close()
+
 # Check to see if there are any manually edited files.
 
 queued_links = []
@@ -60,6 +80,9 @@ errors = False
 for line in out.split('\0'):
     if not line: continue
     status, filename = line.split(' ', 1)
+
+    if regexp and regexp.match(filename):
+        continue
 
     install_filename = join(install_dir, filename)
     link_path = relpath(filename, dirname(install_filename))
@@ -146,8 +169,11 @@ print 'Removing old symlinks...'
 for install_filename in queued_removals:
     os.remove(install_filename)
 
-print 'Writing version number.'
+print 'Writing version number and repo.'
 f = open(version_file, 'w')
 f.write(new_version)
 f.close()
 
+f = open(repo_file, 'w')
+f.write(new_repo)
+f.close()
