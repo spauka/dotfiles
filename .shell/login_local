@@ -1,5 +1,39 @@
 # Custom settings for the usyd SIT machines
 
+# Check for uncommitted changes to the dotfiles repo
+hg_no_local_changes () {
+    local changes=$(hg status --modified --added --removed --deleted --no-status) 2>/dev/null
+    if [ ! -z "$changes" ]; then
+		if [ "$1" = -v ]; then
+			echo "WARNING: you have made changes to some of your dotfiles (configuration files),"
+			echo "which you have not committed to the mercurial repository managing them."
+			echo "If you don't know what this means, just run the command \"dotfiles-commit\","
+			echo "which will stop this message from appearing."
+		fi
+		return 1
+	fi
+}
+
+(cd `cat ~/.dotfiles-repo`;
+    if hg_no_local_changes -v; then
+        # Pull any changes from the SUITS repository.
+        if hg incoming >/dev/null; then
+            echo "NOTE: SUITS has updated their dotfiles repository, autoupdating..."
+            hg pull &&
+            if hg merge suits --tool /bin/false; then
+                hg commit -m "automatic merge" &&
+                python install.py &&
+                echo "NOTE: Successfully updated repository."
+            else
+                echo "ERROR: you have made changes to your dotfiles which are incompatible with the"
+                echo "changes SUITS has made. Please change directory into `cat ~/.dotfiles-repo`,"
+                echo "and run \"hg merge\" to resolve these changes."
+                hg update -C `cat ~/.dotfiles-version`
+            fi
+        fi
+    fi
+)
+
 # Proxy settings
 export http_proxy="http://www-cache.it.usyd.edu.au:8000"
 export https_proxy="http://www-cache.it.usyd.edu.au:8000"
