@@ -38,6 +38,8 @@ elif which lesspipe.sh >/dev/null 2>&1; then
     export LESSOPEN="|lesspipe.sh %s"
 fi
 
+ssource ~/.shell/login_local
+
 # Path settings
 pathprepend ~/bin PATH
 export MANPATH=~/share/man:$MANPATH
@@ -47,5 +49,3 @@ pathprepend ~/include CPATH
 # The current directory should never be in $PATH
 pathremove . PATH
 pathremove "" PATH
-
-ssource ~/.shell/login_local
