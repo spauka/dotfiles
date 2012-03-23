@@ -1,6 +1,6 @@
 set_xterm_title () {
     local title="$1"
-    echo -ne "\e]0;$title\007"
+    printf '\e]0;%s\007' "$title"
 }
 
 precmd () {
