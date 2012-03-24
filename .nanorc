@@ -4,8 +4,6 @@ set autoindent
 set regexp
 # set the tab size
 set tabsize 4
-# set expand tab
-set tabstospaces
 
 include "~/.nano/asm.nanorc"
 include "~/.nano/awk.nanorc"

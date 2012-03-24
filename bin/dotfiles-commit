@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd `cat ~/.dotfiles-repo`
+hg commit -m "Autocommit by dotfiles-commit."
