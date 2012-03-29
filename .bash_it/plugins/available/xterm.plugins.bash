@@ -11,4 +11,8 @@ preexec () {
     set_xterm_title "$1 {`dirs -0`} (${USER}@${HOSTNAME})"
 }
 
-preexec_install
+# Temporary hack to not spew out stuff on terminals which don't use that
+# escape sequence.
+if [ "$TERM" = xterm ]; then
+    preexec_install
+fi
