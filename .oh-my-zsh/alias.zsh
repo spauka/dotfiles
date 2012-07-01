@@ -52,7 +52,7 @@ alias p="$PAGER"
 alias po='popd'
 alias pu='pushd'
 alias rake='noglob rake'
-alias rm='nocorrect rm -i'
+#alias rm='nocorrect rm -i'
 alias scp='nocorrect scp'
 alias type='type -a'
 
