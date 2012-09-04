@@ -78,14 +78,6 @@ alias o='open'
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 
-# Top
-if (( $+commands[htop] )); then
-  alias top=htop
-else
-  alias topm='top -o vsize'
-  alias topc='top -o cpu'
-fi
-
 # Diff/Make
 if zstyle -t ':omz:alias:diff' color; then
   function diff() {
