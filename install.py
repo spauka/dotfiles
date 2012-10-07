@@ -140,6 +140,7 @@ for line in out.split('\0'):
             print 'WARNING: the file %s has already been deleted' % (
                 install_filename,
             )
+            continue
         elif not islink(install_filename):
             print 'ERROR: the file %s should have been a symlink' % (
                 install_filename,
