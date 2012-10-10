@@ -3,7 +3,7 @@
 battery_percentage(){
   if command_exists acpi;
   then
-    local ACPI_OUTPUT=$(acpi -b)
+    local ACPI_OUTPUT=$(acpi -b 2>/dev/null)
     case $ACPI_OUTPUT in
       *" Unknown"*) 
         local PERC_OUTPUT=$(echo $ACPI_OUTPUT | head -c 22 | tail -c 2)
