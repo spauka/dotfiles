@@ -4,14 +4,14 @@
 hg_no_local_changes () {
     local changes=$(hg status --modified --added --removed --deleted --no-status) 2>/dev/null
     if [ ! -z "$changes" ]; then
-		if [ "$1" = -v ]; then
-			echo "WARNING: you have made changes to some of your dotfiles (configuration files),"
-			echo "which you have not committed to the mercurial repository managing them."
-			echo "If you don't know what this means, just run the command \"dotfiles-commit\","
-			echo "which will stop this message from appearing."
-		fi
-		return 1
-	fi
+        if [ "$1" = -v ]; then
+            echo "WARNING: you have made changes to some of your dotfiles (configuration files),"
+            echo "which you have not committed to the mercurial repository managing them."
+            echo "If you don't know what this means, just run the command \"dotfiles-commit\","
+            echo "which will stop this message from appearing."
+        fi
+        return 1
+    fi
 }
 
 (cd `cat ~/.dotfiles-repo`;
@@ -44,6 +44,12 @@ export no_proxy="127.0.0.1,localhost,.usyd.edu.au"
 # if we have a ~/.inputrc, we'll unset it.
 if [ -r ~/.inputrc ]; then
     unset INPUTRC
+fi
+
+# Some of the machines set SSH_ASKPASS to use gnome, which fails miserably
+# if the display is not set. Let's unset it automatically
+if [ "-z $DISPLAY" -a "! -z $SSH_ASKPASS" ]; then
+    unset SSH_ASKPASS
 fi
 
 # Load SUITS config & extra programs.
