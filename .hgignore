@@ -1,2 +1,8 @@
-syntax: glob
-*~
+syntax: regexp
+# Ignore tmp files and swap files
+.*~$
+^.*\.swp$
+
+# Ignore any .ssh files. This ensures that any changes you make to your .ssh config
+# files won't be stored anywhere
+^.ssh/.*$
