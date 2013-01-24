@@ -48,16 +48,16 @@ flowblok_vcprompt() {
   then
     local D_VCPROMPT_FORMAT="on ${D_SCM_COLOR}%s${D_INTERMEDIATE_COLOR}:\
 ${D_BRANCH_COLOR}%b %r ${D_CHANGES_COLOR}%m%u ${D_DEFAULT_COLOR}"
-    $VCPROMPT_EXECUTABLE -f "$D_VCPROMPT_FORMAT"	
+    $VCPROMPT_EXECUTABLE -f "$D_VCPROMPT_FORMAT"  
   fi
 }
 
 # -------------------------------------------------------------- PROMPT OUTPUT
 prompt() {
-  local SAVE_CURSOR='\033[s'
-  local RESTORE_CURSOR='\033[u'
-  local MOVE_CURSOR_RIGHTMOST='\033[500C'
-  local MOVE_CURSOR_5_LEFT='\033[5D'
+  local SAVE_CURSOR='$(tput sc)'
+  local RESTORE_CURSOR='$(tput rc)'
+  local MOVE_CURSOR_RIGHTMOST='$(tput hpa `tput cols`)'
+  local MOVE_CURSOR_5_LEFT='$(tput cub 5)'
 
   if [ $(uname) = "Linux" ];
   then
