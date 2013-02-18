@@ -54,10 +54,10 @@ ${D_BRANCH_COLOR}%b %r ${D_CHANGES_COLOR}%m%u ${D_DEFAULT_COLOR}"
 
 # -------------------------------------------------------------- PROMPT OUTPUT
 prompt() {
-  local SAVE_CURSOR='$(tput sc)'
-  local RESTORE_CURSOR='$(tput rc)'
-  local MOVE_CURSOR_RIGHTMOST='$(tput hpa `tput cols`)'
-  local MOVE_CURSOR_5_LEFT='$(tput cub 5)'
+  local SAVE_CURSOR="$(tput sc)"
+  local RESTORE_CURSOR="$(tput rc)"
+  local MOVE_CURSOR_RIGHTMOST="$(tput hpa \"$(tput cols)\")"
+  local MOVE_CURSOR_5_LEFT="$(tput cub 5)"
 
   if [ $(uname) = "Linux" ];
   then
