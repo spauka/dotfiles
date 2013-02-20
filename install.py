@@ -1,193 +1,198 @@
 #!/usr/bin/env python
+# vim: ts=4 sts=4 sw=4 et
 
-import os
-from os import readlink
+from os import chdir, mkdir, makedirs, symlink, rmdir, walk
 from os.path import (
-    dirname, exists, expanduser, islink, join, lexists, realpath, relpath,
+    basename, exists, expanduser, isdir, join, relpath, realpath, samefile,
 )
+from shutil import copy, copyfile, move
 import re
-from subprocess import Popen, PIPE
+from subprocess import CalledProcessError
 import sys
 
-install_dir = expanduser('~')
+def get_output(command):
+    """ Run the given command and return the output of the command. """
+    try:
+        from subprocess import check_out
+    except ImportError:
+        def check_output(popen_args, **kwargs):
+            from subprocess import Popen, PIPE
+            p = Popen(popen_args, stdout=PIPE, **kwargs)
+            out, _ = p.communicate()
+            p.poll()
+            return out
+    return str(check_output(command.split(), universal_newlines=True))
 
-# Get the current version.
+def inst_and_back(src, dest, bak):
+    """ Copy files from src to dest, backing up existing files to bak. """
+    # Walk the directory structure
+    for d, _, fs in walk(src):
+        # Calculate paths
+        rel_path = relpath(d, src)
+        src_path = join(src, rel_path)
+        dest_path = join(dest, rel_path)
+        bak_path = join(bak, rel_path)
+
+        for f in fs:
+            # Calculate file paths
+            f_src_path = join(src_path, f)
+            f_dest_path = join(dest_path, f)
+            f_bak_path = join(bak_path, f)
+
+            # If the file exists, we need to make a backup of it
+            if exists(f_dest_path):
+                # Create the directory structure if it doesn't already exists
+                if not exists(bak_path):
+                    makedirs(bak_path)
+                # Move the previous file to the new location
+                move(f_dest_path, f_bak_path)
+
+            # Finally, try to install the new file. Ensure that the installation
+            # path exists and create the directory structure, then copy the file
+            # over.
+            if exists(dest_path) and not isdir(dest_path):
+                unlink(dest_path)
+            if not isdir(dest_path):
+                makedirs(dest_path)
+            copy(f_src_path, f_dest_path)
+
+install_dir = realpath(expanduser('~'))
 
 version_file = join(install_dir, '.dotfiles-version')
 repo_file = join(install_dir, '.dotfiles-repo')
 
+# Move into the repo directory. If it doesn't exist
+# it is expected that the cwd is the repo location.
+if exists(repo_file):
+    with open(repo_file, 'rU') as f:
+        repo_path = f.read().strip()
+    if not repo_path or not isdir(repo_path):
+        print 'Repo path "%s" is not a directory.' % repo_path
+        exit(1)
+    repo_path = realpath(repo_path)
+    chdir(repo_path)
+else:
+    try:
+        repo_path = get_output("hg root").strip()
+        chdir(repo_path)
+    except CalledProcessError:
+        print "Unable to find .dotfiles repository."
+        exit(1)
+
+# Read the version
 if not exists(version_file):
     print 'Performing initial installation...'
     installed_version = '000000000000'
+    initial_install = True
 else:
-    f = open(version_file, 'rU')
-    installed_version = f.read().strip()
-    f.close()
+    with open(version_file, 'rU') as f:
+        installed_version = f.read().strip()
+    initial_install = False
     print 'Currently installed version:', installed_version
 
-# Find changed files between the installed revision and the current revision.
-
-p = Popen(args=['hg', 'root'], stdin=PIPE, stdout=PIPE)
-out, _ = p.communicate('')
-new_repo = out.strip()
-
-# if this can be expressed relative to install_dir, we want to do that.
-
-def maybe_relpath(path, start):
-    rv = relpath(path, realpath(start))
-    # TODO: this is a non-portable hack
-    if rv.startswith('../'):
-        return path
-    return join(start, rv)
-
-new_repo = maybe_relpath(new_repo, install_dir)
-
 # get the current revision
-
-p = Popen(args=['hg', 'id', '-i'], stdin=PIPE, stdout=PIPE)
-out, _ = p.communicate('')
-new_version = out.strip()
-
+new_version = get_output("hg id -i").strip()
 if new_version.endswith('+'):
     print 'ERROR: local changes in repository'
-    sys.exit(1)
-
+    #sys.exit(1)
 if new_version == installed_version:
     print 'New version %s is already installed.' % new_version
     sys.exit(0)
 
+# Start the installation process
 print 'Installing new version:', new_version
 
-p = Popen(
-    args=[
-        'hg', 'status',
-        '--rev', installed_version,
-        '-0', '-a', '-r',
-    ],
-    stdin=PIPE,
-    stdout=PIPE,
-)
-out, _ = p.communicate('')
+# Figure out which files which are candidates for installation
+files = get_output("find . -maxdepth 1 -print0")
 
-# Figure out which files we'll ignore
-regexp = None
+# Figure out which files we'll ignore. Initially create a regexp which
+# will never match.
 try:
-    f = open(join(new_repo, '.dotfiles-ignore'), 'rU')
-except (IOError, OSError), e:
-    pass
-else:
-    regexp = '|'.join(
-        '(%s)' % line[:-1]
-        for line in f
-    )
-    regexp = re.compile(regexp)
-    f.close()
+    with open(join(repo_path, '.dotfiles-ignore'), 'rU') as f:
+        ignore = '|'.join(
+            '(%s)' % (line[:-1])
+            for line in f
+            if line.strip() and not line.startswith('#')
+        )
+        if ignore:
+            ignore = re.compile(ignore)
+        else:
+            ignore = re.compile("$x")
+except (IOError, OSError):
+    ignore = re.compile("$x")
 
-# Check to see if there are any manually edited files.
+# Figure out which files only need to be installed once
+# and then should NOT be version controlled.
+try:
+    with open(join(repo_path, '.dotfiles-once'), 'rU') as f:
+        install_once = '|'.join(
+            '(%s)' % (line[:-1])
+            for line in f
+            if line.strip() and not line.startswith('#')
+        )
+        if install_once:
+            install_once = re.compile(install_once)
+        else:
+            install_once = re.compile("$x")
+except (IOError, OSError):
+    install_once = re.compile("$x")
 
-queued_links = []
-queued_removals = []
+# Create a backup folder incase we encounter any conflicts
+tmp_dir = join(install_dir, new_version)
+if exists(tmp_dir):
+    print "Error: Temporary directory already exists."
+    exit(1)
+mkdir(tmp_dir)
 
-errors = False
-
-for line in out.split('\0'):
-    if not line: continue
-    status, filename = line.split(' ', 1)
-
-    if regexp and regexp.match(filename):
+for line in files.split('\0'):
+    # Strip the leading ./
+    line = line[2:]
+    if not line:
         continue
 
-    install_filename = join(install_dir, filename)
-    link_path = relpath(join(new_repo, filename), dirname(install_filename))
-#    print install_filename, '->', link_path
+    # Determine the install path
+    inst = join(install_dir, line)
+    source = join(repo_path, line)
 
-    if status == 'A':
-        # Sanity checking
-        if lexists(install_filename):
-            if islink(install_filename):
-                target = readlink(install_filename)
-                if target == link_path:
-                    print 'WARNING: the symlink (%s -> %s) already exists' % (
-                        install_filename, target,
-                    )
-                elif realpath(target) == realpath(link_path):
-                    print (
-                        'WARNING: the symlink (%s -> %s) already exists '
-                        'but is not canonical'
-                    ) % (install_filename, target)
-                else:
-                    print (
-                        'ERROR: the symlink %s already exists, and does not '
-                        'point somewhere I know about'
-                    ) % (install_filename,)
-                    errors = True
-                    continue
-            else:
-                print (
-                    'ERROR: the file %s already exists, and is not a symlink'
-                ) % (install_filename,)
-                errors = True
-                continue
-
-        # Otherwise, it's fine to make the link.
-        queued_links.append((install_filename, link_path))
-
-    else:
-        assert status == 'R'
-
-        # Sanity checking
-        if not lexists(install_filename):
-            print 'WARNING: the file %s has already been deleted' % (
-                install_filename,
-            )
+    # Try installing things that should only be installed once
+    # if this is an initial installation
+    if install_once.match(line):
+        if not initial_install:
             continue
-        elif not islink(install_filename):
-            print 'ERROR: the file %s should have been a symlink' % (
-                install_filename,
-            )
-            errors = True
-            continue
+        if isdir(source):
+            inst_and_back(source, inst, tmp_dir)
         else:
-            target = readlink(install_filename)
-            if target == link_path:
-                pass # expected case
-            elif realpath(target) == realpath(link_path):
-                print 'WARNING: the symlink (%s -> %s) is not canonical' % (
-                    install_filename, target,
-                )
-            else:
-                print (
-                    'ERROR: the symlink %s does not point where it should'
-                ) % (install_filename,)
-                errors = True
-                continue
+            if exists(inst):
+                move(inst, tmp_dir)
+            copyfile(source, inst)
+        continue
 
-        queued_removals.append(install_filename)
+    # Ignore files which do not need to be installed
+    if ignore.match(line):
+        continue
 
-if errors:
-    print 'Errors found, exiting...'
-    sys.exit(1)
+    # Otherwise, make sure that a symlink exists. If it doesn't, make one
+    if exists(inst):
+        # Check if the symlink is installed
+        if samefile(inst, source):
+            continue
+        # Otherwise make a backup of the existing file
+        move(inst, tmp_dir)
+    # Finally, make a symlink to the location
+    symlink(source, inst)
 
-print 'Installing new symlinks...'
-for install_filename, link_path in queued_links:
-    directory = dirname(install_filename)
-    if not exists(directory):
-        os.makedirs(directory)
-    try:
-        os.remove(install_filename)
-    except OSError:
-        pass # probably the file didn't exist already
-    os.symlink(link_path, install_filename)
-
-print 'Removing old symlinks...'
-for install_filename in queued_removals:
-    os.remove(install_filename)
-
+# Write out the new version details
 print 'Writing version number and repo.'
 f = open(version_file, 'w')
 f.write(new_version)
 f.close()
 
 f = open(repo_file, 'w')
-f.write(new_repo)
+f.write(repo_path)
 f.close()
+
+# Finally we check if the temp-directory was needed. If not, we remove it.
+try:
+    rmdir(tmp_dir)
+except OSError:
+    print "Backed up some files into ~/%s" % (basename(tmp_dir))
