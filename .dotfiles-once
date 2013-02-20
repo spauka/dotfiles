@@ -1,0 +1,5 @@
+# These files are installed only ONCE (at the initial installation)
+# This is to ensure that personal things do not get installed.
+# Expressions are regular expressions
+\.ssh
+bin

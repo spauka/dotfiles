@@ -1,3 +1,11 @@
-\.hg
-\.dotfiles-ignore
-install.py
+# These files will NOT be installed/modified by the setup script.
+# To add extra files, add a regular expression that will match
+# the files you wish to ignore.
+# Note: Only files/directories in the root of the repo are installed
+# so ignoring subdirectories/nested files will have no effect.
+\.hg$
+\.hgignore$
+\.dotfiles-ignore$
+\.dotfiles-once$
+\.ssh$
+install\.py$
