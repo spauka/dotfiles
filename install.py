@@ -94,7 +94,7 @@ else:
 new_version = get_output("hg id -i").strip()
 if new_version.endswith('+'):
     print 'ERROR: local changes in repository'
-    #sys.exit(1)
+    sys.exit(1)
 if new_version == installed_version:
     print 'New version %s is already installed.' % new_version
     sys.exit(0)
