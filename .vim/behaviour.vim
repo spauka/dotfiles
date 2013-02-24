@@ -6,6 +6,7 @@ set modeline
 
 " Create backup files.
 set backup
+set backupdir=~/.tmp/vimbak
 
 " Remember previously used commands.
 set history=100
