@@ -6,7 +6,14 @@ set modeline
 
 " Create backup files.
 set backup
-set backupdir=~/.tmp/vimbak
+" Create the backup dir if it doesn't exist
+if has("unix")
+    if !isdirectory(expand("~/.tmp/vimbak/."))
+        !mkdir -p ~/.tmp/vimbak
+    endif
+    set backupdir=~/.tmp/vimbak,.
+    set directory=~/.tmp/vimbak,.
+endif
 
 " Remember previously used commands.
 set history=100
