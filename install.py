@@ -13,7 +13,7 @@ import sys
 def get_output(command):
     """ Run the given command and return the output of the command. """
     try:
-        from subprocess import check_out
+        from subprocess import check_output
     except ImportError:
         def check_output(popen_args, **kwargs):
             from subprocess import Popen, PIPE
