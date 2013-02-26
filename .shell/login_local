@@ -52,6 +52,10 @@ if [ "-z $DISPLAY" -a "! -z $SSH_ASKPASS" ]; then
     unset SSH_ASKPASS
 fi
 
+# The path for some reason includes a really old repo of programs, we should
+# disable it.
+pathremove "/local/usr/bin" PATH
+
 # Load SUITS config & extra programs.
 . ~suits/pub/init.sh
 
