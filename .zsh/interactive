@@ -1,27 +1,21 @@
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':omz:editor' keymap 'emacs'
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
 
-# Auto convert .... to ../..
-zstyle ':omz:editor' dot-expansion 'no'
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="flowblok"
 
-# Set case-sensitivity for completion, history lookup, etc.
-zstyle ':omz:*:*' case-sensitive 'yes'
+# Set to this to use case-sensitive completion
+CASE_SENSITIVE="true"
 
-# Color output (auto set to 'no' on dumb terminals).
-zstyle ':omz:*:*' color 'yes'
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git mercurial)
 
-# Auto set the tab and window titles.
-zstyle ':omz:terminal' auto-title 'yes'
-
-# Set the plugins to load (see $OMZ/plugins/).
-zstyle ':omz:load' plugin 'archive' 'git'
-
-# Set the prompt theme to load.
-# Setting it to 'random' loads a random theme.
-# Auto set to 'off' on dumb terminals.
-zstyle ':omz:prompt' theme 'flowblok'
-
-. ~/.oh-my-zsh/init.zsh
+source $ZSH/oh-my-zsh.sh
 
 . ~/.shell/interactive
 
