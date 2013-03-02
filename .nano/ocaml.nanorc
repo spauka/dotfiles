@@ -8,7 +8,7 @@ color green "\<(let|val|method|in|and|rec|private|virtual|constraint)\>"
 #structure items
 color red "\<(type|open|class|module|exception|external)\>"
 #patterns
-color blue "\<(fun|function|functor|match|try|with)\>"
+color brightblue "\<(fun|function|functor|match|try|with)\>"
 #patterns-modifiers
 color yellow "\<(as|when|of)\>" 
 #conditions

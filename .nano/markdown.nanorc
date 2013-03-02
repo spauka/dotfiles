@@ -7,7 +7,7 @@ color green "(^|[[:space:]])(_[^ ][^_]*_|\*[^ ][^*]*\*)"
 color brightgreen "(^|[[:space:]])(__[^ ][^_]*__|\*\*[^ ][^*]*\*\*)"
 
 color brightmagenta  "^=====*$|^-----*$|^#{1,6}.*"
-color blue   "^[[:space:]]*[\*+-] |^[[:space:]]*[0-9]+\. "
+color brightblue   "^[[:space:]]*[\*+-] |^[[:space:]]*[0-9]+\. "
 # color white    "^[[:space:]]+"
 color magenta   "\(([CcRr]|[Tt][Mm])\)" "\.{3}" "(^|[[:space:]])\-\-($|[[:space:]])"
 color brightyellow "\!?\[[^]]*\]([[:space:]]*\[[^]]*\]|\(.*\))?"

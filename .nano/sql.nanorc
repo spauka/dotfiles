@@ -26,7 +26,7 @@ icolor brightcyan "\.\<(import|indices|mode|nullvalue|output|prompt|quit|read)\>
 icolor brightcyan "\.\<(schema|separator|show|tables|timeout|width)\>"
 color brightcyan  "\<(ON|OFF)\>"
 
-color blue   "\<([0-9]+)\>"
+color brightblue   "\<([0-9]+)\>"
 color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
 color yellow   "`(\\.|[^\\`])*`"
 color cyan  "\-\-.*$"

@@ -5,7 +5,7 @@ syntax "colortest" "ColorTest$"
 color red "\<red\>"
 color green "\<green\>"
 color yellow "\<yellow\>"
-color blue "\<blue\>"
+color brightblue "\<blue\>"
 color magenta "\<magenta\>"
 color cyan "\<cyan\>"
 
