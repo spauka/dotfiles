@@ -15,4 +15,6 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.txt setfiletype text
     " vala
     au! BufRead,BufNewFile *.vala,*.vapi setfiletype vala
+    " cuda
+    au BufNewFile,BufRead *.cu set ft=cu
 augroup END
