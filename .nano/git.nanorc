@@ -1,0 +1,16 @@
+syntax "gitconfig" "git(config|modules)$|\.git/config$"
+
+color brightcyan "\<(true|false)\>"
+color brightcyan "^[[:space:]]*[^=]*="
+color brightmagenta "^[[:space:]]*\[.*\]$"
+color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
+color cyan "(^|[[:space:]])#([^{].*)?$"
+color ,green "[[:space:]]+$"
+color ,red "	+"
+
+syntax "gitmsg" "COMMIT_EDITMSG$"
+
+color magenta   "\\."
+color cyan "(^|[[:space:]])#([^{].*)?$"
+color ,green "[[:space:]]+$"
+color ,red "	+"

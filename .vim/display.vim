@@ -8,8 +8,6 @@ else
     colorscheme default
 endif
 
-"set guifont=Liberation\ Mono\ 12
-
 " Show the line/column positions at the bottom
 set ruler
 

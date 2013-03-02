@@ -5,6 +5,7 @@ runtime ~/.vim/local.vim
 " Load plugins
 call pathogen#infect('bundle-enabled')
 
+source ~/.vim/filetype.vim
 source ~/.vim/aliases.vim
 source ~/.vim/keybindings.vim
 source ~/.vim/behaviour.vim
