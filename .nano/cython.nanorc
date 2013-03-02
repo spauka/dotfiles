@@ -1,12 +1,17 @@
-syntax "python" "\.py$" "jhbuildrc$"
-header "^#!.*/(env +)?python[-0-9._]*( |$)"
+syntax "cython" "\.(pyx|pxd|pyi)$"
 
-color brightblack  "\<(as|assert|break|class|continue|def|del|elif|else|except)\>"
-color brightblack  "\<(exec|finally|for|from|global|if|import|lambda)\>"
-color brightblack  "\<(pass|print|raise|return|try|while|with|yield|None)\>"
 color brightblue "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[(]"
 color black    "[(]"
-color red "[-+*/|=%<>&~^]|\<(and|not|or|is|in)\>"
+color brightblack  "\<(and|as|assert|break|class|continue|def|del|elif|else|except)\>"
+color brightblack  "\<(exec|finally|for|from|global|if|import|in|is|lambda|not|or)\>"
+color brightblack  "\<(pass|print|raise|return|try|while|with|yield|None)\>"
+color brightblack  "\<(DEF|ELIF|ELSE|IF)\>"
+
+color brightblack  "\<(cp?def( inline)?|cimport|cppclass|ctypedef|extern|include)\>"
+color brightblack  "\<(namespace|property|struct)\>"
+color green     "\<(bint|char|double|int|public|void|unsigned)\>"
+
+color red "[.:;,+*|=!\%@<>/&-]"
 color brightyellow    "@[A-Za-z0-9_]+"
 color brightmagenta  "__[A-Za-z0-9_]+__"
 color brightcyan  "\<(True|False)\>"
