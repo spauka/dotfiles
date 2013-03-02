@@ -45,8 +45,8 @@ color brightblue "[[:space:]]+-[a-zA-Z0-9_-]+"
 color magenta "-[[:digit:]].*([[:space:]]|$)"
 color magenta ":[^[:space:]]+([[:space:]]|$)"
 ## Accepted arches:
-color white "[~-]?\<(alpha|amd64|arm|hppa|ia64|mips|ppc|ppc64|s390|sh|sparc(-fbsd)?|x86(-fbsd)?)\>"
-color white "[[:space:]][*~-]?\*"
+# color white "[~-]?\<(alpha|amd64|arm|hppa|ia64|mips|ppc|ppc64|s390|sh|sparc(-fbsd)?|x86(-fbsd)?)\>"
+# color white "[[:space:]][*~-]?\*"
 ## Categories:
 color cyan "^[[:space:]]*.*/"
 ## Masking regulators:

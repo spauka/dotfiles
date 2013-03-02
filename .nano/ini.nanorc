@@ -1,7 +1,7 @@
 syntax "ini" "\.(ini|desktop|lfl|override)$" "(mimeapps\.list|pinforc|setup\.cfg)$"
 
 color brightcyan "\<(true|false)\>"
-color brightwhite "^[[:space:]]*[^=]*="
+color brightcyan "^[[:space:]]*[^=]*="
 color brightmagenta "^[[:space:]]*\[.*\]$"
 color red "[=;]"
 color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"

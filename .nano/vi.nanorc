@@ -1,9 +1,9 @@
 syntax "vi" "(^|/|\.)(ex|vim)rc$|\.vim"
 
 color brightblue "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[(]"
-color white    "[(]"
-color brightwhite  "\<([nvxsoilc]?(nore|un)?map|[nvlx]n|[ico]?no|[cilovx][um]|s?unm)\>"
-color brightwhite  "\<(snor|nun|nm|set|if|endif|let|unlet)\>"
+# color white    "[(]"
+color brightcyan  "\<([nvxsoilc]?(nore|un)?map|[nvlx]n|[ico]?no|[cilovx][um]|s?unm)\>"
+color brightcyan  "\<(snor|nun|nm|set|if|endif|let|unlet)\>"
 color red "[!&=]"
 color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
 color cyan  "(^|[[:space:]])\"[^"]*$"

@@ -1,12 +1,12 @@
 syntax "KickStart" "\.ks$" "\.kickstart$"
 
 color brightmagenta  "%[a-z]+"
-color brightwhite  "^[[:space:]]*(install|cdrom|text|graphical|volgroup|logvol|reboot|timezone|lang|keyboard|authconfig|firstboot|rootpw|user|firewall|selinux|repo|part|partition|clearpart|bootloader)"
-color brightwhite  "--(name|mirrorlist|baseurl|utc)(=|\>)"
+color brightcyan  "^[[:space:]]*(install|cdrom|text|graphical|volgroup|logvol|reboot|timezone|lang|keyboard|authconfig|firstboot|rootpw|user|firewall|selinux|repo|part|partition|clearpart|bootloader)"
+color brightcyan  "--(name|mirrorlist|baseurl|utc)(=|\>)"
 color brightyellow "\$(releasever|basearch)\>"
 
 # Packages and groups
-color brightwhite "^@[A-Za-z][A-Za-z-]*"
+color brightcyan "^@[A-Za-z][A-Za-z-]*"
 color brightred   "^-@[a-zA-Z0-9*-]+"
 color red         "^-[a-zA-Z0-9*-]+"
 

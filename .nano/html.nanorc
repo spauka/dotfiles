@@ -7,7 +7,7 @@ color brightmagenta      "</?(a|abbr|address|area|article|aside|audio|b|base|bdo
 color yellow   "=([A-Za-z0-9!$%*\^(){}#|:;_~@+,.?/\\-]|\[|\])+"
 color red "="
 color yellow ""(\\.|[^"])*"|'(\\.|[^'])*'"
-color white    start=">" end="<"
+# color white    start=">" end="<"
 color brightmagenta      "[<>]"
 
 # Embedded template languages
