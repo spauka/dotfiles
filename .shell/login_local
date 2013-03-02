@@ -57,5 +57,7 @@ fi
 pathremove "/local/usr/bin" PATH
 
 # Load SUITS config & extra programs.
-. ~suits/pub/init.sh
+if [ -x ~suits/pub/init.sh ]; then
+    . ~suits/pub/init.sh
+fi
 
