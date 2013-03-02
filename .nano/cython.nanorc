@@ -1,14 +1,14 @@
 syntax "cython" "\.(pyx|pxd|pyi)$"
 
 color brightblue "[A-Za-z_][A-Za-z0-9_]*[[:space:]]*[(]"
-color black    "[(]"
-color brightblack  "\<(and|as|assert|break|class|continue|def|del|elif|else|except)\>"
-color brightblack  "\<(exec|finally|for|from|global|if|import|in|is|lambda|not|or)\>"
-color brightblack  "\<(pass|print|raise|return|try|while|with|yield|None)\>"
-color brightblack  "\<(DEF|ELIF|ELSE|IF)\>"
+color white    "[(]"
+color brightwhite  "\<(and|as|assert|break|class|continue|def|del|elif|else|except)\>"
+color brightwhite  "\<(exec|finally|for|from|global|if|import|in|is|lambda|not|or)\>"
+color brightwhite  "\<(pass|print|raise|return|try|while|with|yield|None)\>"
+color brightwhite  "\<(DEF|ELIF|ELSE|IF)\>"
 
-color brightblack  "\<(cp?def( inline)?|cimport|cppclass|ctypedef|extern|include)\>"
-color brightblack  "\<(namespace|property|struct)\>"
+color brightwhite  "\<(cp?def( inline)?|cimport|cppclass|ctypedef|extern|include)\>"
+color brightwhite  "\<(namespace|property|struct)\>"
 color green     "\<(bint|char|double|int|public|void|unsigned)\>"
 
 color red "[.:;,+*|=!\%@<>/&-]"
