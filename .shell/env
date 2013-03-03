@@ -1,4 +1,4 @@
-# We need to set $ENV so that if you use shell X as your login shell,
+# vim: ft=sh ts=4 sts=4 sw=4 et
 # and then start "sh" as a non-login interactive shell the startup scripts will
 # correctly run.
 export ENV=~/.sh/interactive
