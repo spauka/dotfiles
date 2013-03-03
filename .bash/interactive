@@ -3,7 +3,7 @@
 export BASH_IT=~/.bash_it
 
 # Theme (from ~/.bash_it/themes/)
-export BASH_IT_THEME=flowblok
+export BASH_IT_THEME=clean-v2
 
 # Load Bash It
 . $BASH_IT/bash_it.sh
