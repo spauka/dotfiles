@@ -25,7 +25,7 @@ function prompt_command() {
 
     if [ "$(whoami)" = root ]; then no_color=$bold_red; else no_color=$bold_green; fi
 
-    PS1="$(sebs_lcf)${no_color}\h@\u${reset_color}:${cyan}\w/${reset_color} $ "
+    PS1="$(sebs_lcf)${no_color}\u@\h${reset_color}:${cyan}\w/${reset_color} $ "
     RPROMPT='[\t]'
 }
 
