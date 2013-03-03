@@ -54,7 +54,6 @@ ${D_USER_COLOR}\u${D_INTERMEDIATE_COLOR}\
 @${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}\
 in ${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
 $(mitsuhikos_lastcommandfailed)\
-$(flowblok_vcprompt)\
 $(is_vim_shell)
 ${D_INTERMEDIATE_COLOR}$ ${D_DEFAULT_COLOR}"
   else
@@ -63,7 +62,6 @@ ${D_USER_COLOR}\u ${D_INTERMEDIATE_COLOR}\
 at ${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}\
 in ${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
 $(mitsuhikos_lastcommandfailed)\
-$(flowblok_vcprompt)\
 $(is_vim_shell)\
 $(battery_charge)
 ${D_INTERMEDIATE_COLOR}$ ${D_DEFAULT_COLOR}"
