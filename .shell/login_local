@@ -1,4 +1,4 @@
-# Custom settings for the usyd SIT machines
+# vim: ft=sh ts=4 sts=4 sw=4 et
 
 # Check for uncommitted changes to the dotfiles repo
 hg_no_local_changes () {

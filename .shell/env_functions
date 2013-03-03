@@ -1,4 +1,4 @@
-# Usage: indirect_expand PATH -> $PATH
+# vim: ft=sh ts=4 sts=4 sw=4 et
 indirect_expand () {
     env |sed -n "s/^$1=//p"
 }
