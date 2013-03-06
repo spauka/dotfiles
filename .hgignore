@@ -11,4 +11,3 @@ syntax: regexp
 
 # Ignore any compiled files that appear in the repo
 .*.pyc*
-\.vim/.*\.*

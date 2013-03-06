@@ -38,16 +38,6 @@ mitsuhikos_lastcommandfailed() {
 \$exit ${D_DEFAULT_COLOR}\"; fi\`"
 }
 
-# vcprompt for scm instead of bash_it default
-flowblok_vcprompt() {
-  if [ ! -z "$VCPROMPT_EXECUTABLE" ];
-  then
-    local D_VCPROMPT_FORMAT="on ${D_SCM_COLOR}%s${D_INTERMEDIATE_COLOR}:\
-${D_BRANCH_COLOR}%b %r ${D_CHANGES_COLOR}%m%u ${D_DEFAULT_COLOR}"
-    $VCPROMPT_EXECUTABLE -f "$D_VCPROMPT_FORMAT"  
-  fi
-}
-
 # -------------------------------------------------------------- PROMPT OUTPUT
 prompt() {
   local SAVE_CURSOR="$(tput sc)"
@@ -64,7 +54,6 @@ ${D_USER_COLOR}\u${D_INTERMEDIATE_COLOR}\
 @${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}\
 in ${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
 $(mitsuhikos_lastcommandfailed)\
-$(flowblok_vcprompt)\
 $(is_vim_shell)
 ${D_INTERMEDIATE_COLOR}$ ${D_DEFAULT_COLOR}"
   else
@@ -73,7 +62,6 @@ ${D_USER_COLOR}\u ${D_INTERMEDIATE_COLOR}\
 at ${D_MACHINE_COLOR}\h ${D_INTERMEDIATE_COLOR}\
 in ${D_DIR_COLOR}\w ${D_INTERMEDIATE_COLOR}\
 $(mitsuhikos_lastcommandfailed)\
-$(flowblok_vcprompt)\
 $(is_vim_shell)\
 $(battery_charge)
 ${D_INTERMEDIATE_COLOR}$ ${D_DEFAULT_COLOR}"
