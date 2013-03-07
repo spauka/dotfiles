@@ -13,7 +13,7 @@ export CVS_RSH=ssh
 export RSYNC_RSH=ssh
 
 # Language
-if ~suits/pub/bin/is1903 $USER; then
+if [ -x ~suits/pub/bin/is1903 ] && ~suits/pub/bin/is1903 $USER; then
     export LANG='C'
 else
     export LANG='en_AU.UTF-8'
