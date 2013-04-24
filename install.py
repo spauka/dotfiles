@@ -178,8 +178,10 @@ for line in files.split('\0'):
             continue
         # Otherwise make a backup of the existing file
         move(inst, tmp_dir)
+    path = relpath(source, install_dir)
+    print path
     # Finally, make a symlink to the location
-    symlink(source, inst)
+    symlink(path, inst)
 
 # Write out the new version details
 print 'Writing version number and repo.'
