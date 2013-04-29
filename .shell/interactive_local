@@ -5,5 +5,5 @@
 # these paths don't get fixed. Let's fix them.
 # Fix thanks to Joel Gibson
 if [ -f /etc/profile.d/bash_path.sh ]; then
- . /etc/profile.d/bash_path.sh
- fi
+ pathremove /local/usr/bin PATH
+fi
