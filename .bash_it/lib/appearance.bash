@@ -4,8 +4,9 @@
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
 
-# colored ls
-export LSCOLORS='Gxfxcxdxdxegedabagacad'
+if [[ -f "$HOME/.dir_colors" ]]; then
+    eval $(dircolors "$HOME/.dir_colors")
+fi
 
 # Load the theme
 if [[ $BASH_IT_THEME ]]; then
