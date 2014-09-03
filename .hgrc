@@ -37,10 +37,10 @@ attend = diff,status,log,qdiff,blame,annotate,pdiff,glog
 bbs = ssh://hg@bitbucket.org/
 
 [ui]
-username = $NAME <$EMAIL>
+username = Sebastian Pauka <spauka@gmail.com>
 
 #merge = meld
-#merge = vimdiff
+merge = vimdiff
 
 [web]
 allow_archive = zip bz2 gz
