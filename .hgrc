@@ -2,7 +2,6 @@
 bookmarks =
 color =
 convert =
-eol =
 extdiff =
 gpg =
 graphlog =
@@ -10,12 +9,10 @@ highlight =
 #hggit =
 mq =
 pager =
-progress =
 prompt = ~/.hgext/hg-prompt/prompt.py
 rebase =
 record =
 relink =
-schemes =
 transplant =
 zeroconf =
 
