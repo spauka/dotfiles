@@ -12,3 +12,6 @@ source ~/.vim/behaviour.vim
 source ~/.vim/interaction.vim
 source ~/.vim/display.vim
 
+set background=dark
+colorscheme solarized
+
