@@ -1,10 +1,10 @@
 # vim: ft=sh ts=4 sts=4 sw=4 et
 
 # Proxy settings
-export http_proxy="http://www-cache.it.usyd.edu.au:8000"
-export https_proxy="http://www-cache.it.usyd.edu.au:8000"
-export ftp_proxy="http://www-cache.it.usyd.edu.au:8000"
-export no_proxy="127.0.0.1,localhost,.usyd.edu.au"
+#export http_proxy="http://www-cache.it.usyd.edu.au:8000"
+#export https_proxy="http://www-cache.it.usyd.edu.au:8000"
+#export ftp_proxy="http://www-cache.it.usyd.edu.au:8000"
+#export no_proxy="127.0.0.1,localhost,.usyd.edu.au"
 
 # On some older machines, $INPUTRC is set.
 # if we have a ~/.inputrc, we'll unset it.
