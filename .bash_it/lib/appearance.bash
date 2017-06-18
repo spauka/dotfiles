@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # colored grep
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
 
 if [[ -f "$HOME/.dir_colors" ]]; then

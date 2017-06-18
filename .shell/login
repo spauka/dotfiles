@@ -1,6 +1,6 @@
 # vim: ft=sh ts=4 sts=4 sw=4 et
-#export NAME='Your Full Name'
-#export EMAIL='youremail@example.net'
+export NAME='Sebastian Pauka'
+export EMAIL='spauka@gmail.com'
 
 # Preferred programs
 export PAGER=less

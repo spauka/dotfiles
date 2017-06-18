@@ -8,7 +8,7 @@ indirect_expand () {
 #     pathremove ~/bin PATH
 pathremove () {
     local IFS=':'
-    local newpath
+    local newpath=""
     local dir
     local var=${2:-PATH}
     # Bash has ${!var}, but this is not portable.
