@@ -118,8 +118,9 @@ function preexec_install () {
     # where the options can't be set, and it's impossible to inherit the trap
     # into subshells.
 
-    set -o functrace > /dev/null 2>&1
-    shopt -s extdebug > /dev/null 2>&1
+    # These cause an error on rhel6
+    #set -o functrace > /dev/null 2>&1
+    #shopt -s extdebug > /dev/null 2>&1
 
     # Finally, install the actual traps.
     if [[ ! -z "${PROMPT_COMMAND// }" ]]; then
