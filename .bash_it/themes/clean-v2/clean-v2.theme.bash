@@ -8,7 +8,7 @@ function prompt_command() {
 
     if [ "$(whoami)" = root ]; then no_color=$bold_red; else no_color=$bold_green; fi
 
-    PS1="${no_color}\u@\h${reset_color}:${cyan}\w/${reset_color} \[\$(scm_prompt_info)\]$ "
+    PS1="${no_color}\u@\h${reset_color}:${cyan}\w/${reset_color}\[\$(scm_prompt_info)\]$ "
     RPROMPT='[\t]'
 }
 
