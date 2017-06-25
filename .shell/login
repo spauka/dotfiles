@@ -38,12 +38,6 @@ fi
 
 ssource ~/.shell/login_local
 
-# Path settings
-pathprepend ~/bin PATH
-export MANPATH=~/share/man:$MANPATH
-pathprepend ~/lib LD_LIBRARY_PATH
-pathprepend ~/include CPATH
-
 # The current directory should never be in $PATH
 pathremove . PATH
 pathremove "" PATH
