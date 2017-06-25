@@ -21,4 +21,13 @@ fi
 # Enable window size check after each program exit
 shopt -s checkwinsize
 
+export TERM=xterm-256color
+
+# Path settings
+pathprepend ~/bin PATH
+export MANPATH=~/share/man:$MANPATH
+pathprepend ~/lib LD_LIBRARY_PATH
+pathprepend ~/lib64 LD_LIBRARY_PATH
+pathprepend ~/include CPATH
+
 ssource ~/.shell/interactive_local

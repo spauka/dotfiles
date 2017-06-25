@@ -3,3 +3,6 @@
 
 [merge]
     tool = meld
+[user]
+	name = Sebastian Pauka
+	email = spauka@gmail.com
