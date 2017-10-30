@@ -39,8 +39,12 @@ fi
 ssource ~/.shell/login_local
 
 # Path settings
+# Fix manpath first
+export MANPATH=`manpath`
+# Add new paths
 pathprepend ~/bin PATH
-export MANPATH=~/share/man:$MANPATH
+pathprepend ~/Library/Python/3.6/bin/ PATH
+pathprepend ~/share/man MANPATH
 pathprepend ~/lib LD_LIBRARY_PATH
 pathprepend ~/include CPATH
 pathprepend "/opt/local/bin" PATH
