@@ -1,1 +1,1 @@
-nested = .hgext/hg-prompt
+hg-prompt = .hgext/hg-prompt
