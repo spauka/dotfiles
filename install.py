@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # vim: ts=4 sts=4 sw=4 et
 
 from os import chdir, mkdir, makedirs, symlink, rmdir, walk
@@ -67,40 +67,43 @@ if exists(repo_file):
     with open(repo_file, 'rU') as f:
         repo_path = f.read().strip()
     if not repo_path or not isdir(repo_path):
-        print 'Repo path "%s" is not a directory.' % repo_path
+        print('Repo path "%s" is not a directory.' % repo_path)
         exit(1)
     repo_path = realpath(repo_path)
     chdir(repo_path)
 else:
     try:
-        repo_path = get_output("hg root").strip()
+        repo_path = get_output("git rev-parse --show-toplevel").strip()
         chdir(repo_path)
     except CalledProcessError:
-        print "Unable to find .dotfiles repository."
+        print("Unable to find .dotfiles repository.")
         exit(1)
 
 # Read the version
 if not exists(version_file):
-    print 'Performing initial installation...'
+    print('Performing initial installation...')
     installed_version = '000000000000'
     initial_install = True
 else:
     with open(version_file, 'rU') as f:
         installed_version = f.read().strip()
     initial_install = False
-    print 'Currently installed version:', installed_version
+    print('Currently installed version:', installed_version)
+
+# Check for changes
+changes = get_output("git status -s").strip()
+if changes:
+    print("Error: local changes in repository")
+    sys.exit(1)
 
 # get the current revision
-new_version = get_output("hg id -i").strip()
-if new_version.endswith('+'):
-    print 'ERROR: local changes in repository'
-    sys.exit(1)
+new_version = get_output("git rev-parse HEAD").strip()
 if new_version == installed_version:
-    print 'New version %s is already installed.' % new_version
+    print('New version %s is already installed.' % new_version)
     sys.exit(0)
 
 # Start the installation process
-print 'Installing new version:', new_version
+print('Installing new version:', new_version)
 
 # Figure out which files which are candidates for installation
 files = get_output("find . -maxdepth 1 -print0")
@@ -140,7 +143,7 @@ except (IOError, OSError):
 # Create a backup folder incase we encounter any conflicts
 tmp_dir = join(install_dir, new_version)
 if exists(tmp_dir):
-    print "Error: Temporary directory already exists."
+    print("Error: Temporary directory already exists.")
     exit(1)
 mkdir(tmp_dir)
 
@@ -179,12 +182,12 @@ for line in files.split('\0'):
         # Otherwise make a backup of the existing file
         move(inst, tmp_dir)
     path = relpath(source, install_dir)
-    print path
+    print(path)
     # Finally, make a symlink to the location
     symlink(path, inst)
 
 # Write out the new version details
-print 'Writing version number and repo.'
+print('Writing version number and repo.')
 f = open(version_file, 'w')
 f.write(new_version)
 f.close()
@@ -197,4 +200,4 @@ f.close()
 try:
     rmdir(tmp_dir)
 except OSError:
-    print "Backed up some files into ~/%s" % (basename(tmp_dir))
+    print("Backed up some files into ~/%s" % (basename(tmp_dir)))
