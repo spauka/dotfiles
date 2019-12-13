@@ -4,3 +4,6 @@
 [submodule ".bash_it"]
 	path = .bash_it
 	url = git@github.com:Bash-it/bash-it.git
+[submodule ".vim/bundle-available/nerdcommenter"]
+	path = .vim/bundle-available/nerdcommenter
+	url = git@github.com:scrooloose/nerdcommenter.git
