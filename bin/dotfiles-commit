@@ -2,3 +2,4 @@
 
 cd `cat ~/.dotfiles-repo`
 git commit -a -m "Autocommit by dotfiles-commit."
+git push
