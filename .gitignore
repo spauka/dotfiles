@@ -1,16 +1,15 @@
-syntax: regexp
 # Ignore tmp files and swap files
-.*~$
-^.*\.swp$
+*~
+*.swp
 
 # Ignore any .ssh files. This ensures that any changes you make to your .ssh config
 # files won't be stored anywhere.
 # This shouldn't happen since the repo won't have access to your ssh directory anyway
 # but let's be safe.
-^.ssh/.*$
+/.ssh
 
 # Ignore any compiled files that appear in the repo
-.*.pyc*
+*.pyc
 
 # Ignore temporary files created by vim
-\.vim/\.netrwhist
+/.vim/.netrwhist
