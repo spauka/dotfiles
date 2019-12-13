@@ -64,7 +64,7 @@ repo_file = join(install_dir, '.dotfiles-repo')
 # Move into the repo directory. If it doesn't exist
 # it is expected that the cwd is the repo location.
 if exists(repo_file):
-    with open(repo_file, 'rU') as f:
+    with open(repo_file, 'r') as f:
         repo_path = f.read().strip()
     if not repo_path or not isdir(repo_path):
         print('Repo path "%s" is not a directory.' % repo_path)
@@ -85,7 +85,7 @@ if not exists(version_file):
     installed_version = '000000000000'
     initial_install = True
 else:
-    with open(version_file, 'rU') as f:
+    with open(version_file, 'r') as f:
         installed_version = f.read().strip()
     initial_install = False
     print('Currently installed version:', installed_version)
