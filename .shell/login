@@ -20,9 +20,6 @@ export LC_MONETARY=$LANG
 export LC_NUMERIC=$LANG
 export LC_TIME=$LANG
 
-# Python
-export PYTHONSTARTUP=$HOME/.pythonrc.py
-
 # Less
 #export LESS='-F -g -i -M -R -S -w -X -z-4'
 export LESS='FRSXQ'

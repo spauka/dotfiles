@@ -12,5 +12,3 @@ if [ "-z $DISPLAY" -a "! -z $SSH_ASKPASS" ]; then
     unset SSH_ASKPASS
 fi
 
-# Set python path
-pathprepend /Library/Frameworks/Python.framework/Versions/3.8/bin PATH

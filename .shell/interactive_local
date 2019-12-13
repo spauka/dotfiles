@@ -1,9 +1,2 @@
 # vim: ft=sh ts=4 sts=4 sw=4 et
 
-# At SIT there are some old paths left from the old days.
-# If we are a remote shell, we are not a login shell and
-# these paths don't get fixed. Let's fix them.
-# Fix thanks to Joel Gibson
-if [ -f /etc/profile.d/bash_path.sh ]; then
- pathremove /local/usr/bin PATH
-fi
