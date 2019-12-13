@@ -10,7 +10,7 @@ set blink-matching-paren on
 # Alt-Left
 "\e[1;3D": beginning-of-line
 # Alt-Right
-"\e[1;3C": end-of-line      
+"\e[1;3C": end-of-line
 
 # Ctrl L
 "\C-l": clear-screen
@@ -30,6 +30,6 @@ set blink-matching-paren on
 "\e[1~": beginning-of-line
 #
 # End
-"\eOF": end-of-line      
-"\e[F": end-of-line      
+"\eOF": end-of-line
+"\e[F": end-of-line
 "\e[4~": end-of-line
