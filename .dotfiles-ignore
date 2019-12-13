@@ -3,8 +3,8 @@
 # the files you wish to ignore.
 # Note: Only files/directories in the root of the repo are installed
 # so ignoring subdirectories/nested files will have no effect.
-\.hg$
-\.hgignore$
+\.git$
+\.gitignore$
 \.dotfiles-ignore$
 \.dotfiles-once$
 \.ssh$
