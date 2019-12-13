@@ -39,8 +39,9 @@ fi
 ssource ~/.shell/login_local
 
 # Path settings
+export MANPATH=`manpath`
 pathprepend ~/bin PATH
-export MANPATH=~/share/man:$MANPATH
+pathprepend ~/share/man MANPATH
 pathprepend ~/lib LD_LIBRARY_PATH
 pathprepend ~/include CPATH
 
