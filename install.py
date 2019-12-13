@@ -21,7 +21,7 @@ def get_output(command):
             out, _ = p.communicate()
             p.poll()
             return out
-    return str(check_output(command.split(), universal_newlines=True))
+    return check_output(command.split(), universal_newlines=True).decode('utf-8')
 
 def inst_and_back(src, dest, bak):
     """ Copy files from src to dest, backing up existing files to bak. """
