@@ -1,1 +1,0 @@
-../available/dirs.plugin.bash

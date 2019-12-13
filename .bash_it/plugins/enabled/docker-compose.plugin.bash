@@ -1,1 +1,0 @@
-../available/docker-compose.plugin.bash
