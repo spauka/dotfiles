@@ -6,3 +6,5 @@
 [user]
 	email = spauka@gmail.com
 	name = Sebastian Pauka
+[core]
+	excludesfile = ~/.user.gitignore
