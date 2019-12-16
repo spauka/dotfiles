@@ -9,7 +9,8 @@ export BASH_ENV=~/.bash/env
 
 . ~/.shell/env_functions
 
-umask 0077
+# Allow user to edit, group to read, and nothing to other
+umask 0027
 
 ssource ~/.shell/env_local
 
