@@ -27,6 +27,7 @@ Temporary Items
 .apdisk
 
 # Exclude VS Code files
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
