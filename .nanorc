@@ -10,10 +10,6 @@ set tabsize 4
 set multibuffer
 # Remember command history
 set historylog
-# Enable undo/redo features
-set undo
-# Show cursor position
-set const
 
 include "~/.nano/asm.nanorc"
 include "~/.nano/awk.nanorc"
