@@ -8,3 +8,4 @@
 	name = Sebastian Pauka
 [core]
 	excludesfile = ~/.gitignore_usr
+	symlinks = true
