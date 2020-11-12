@@ -9,3 +9,5 @@
 [core]
 	excludesfile = ~/.gitignore_usr
 	symlinks = true
+[push]
+	default = matching
