@@ -37,7 +37,9 @@ ssource ~/.shell/login_local
 
 # Path settings
 pathprepend ~/bin PATH
+pathprepend ~/.local/bin PATH
 pathprepend ~/share/man MANPATH
+pathprepend ~/.local/share/man MANPATH
 pathprepend ~/lib LD_LIBRARY_PATH
 pathprepend ~/include CPATH
 
