@@ -10,5 +10,3 @@
 . ~/.bash/env
 . ~/.bash/interactive
 
-
-
