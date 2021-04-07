@@ -111,7 +111,7 @@ files = get_output("find . -maxdepth 1 -print0")
 # Figure out which files we'll ignore. Initially create a regexp which
 # will never match.
 try:
-    with open(join(repo_path, '.dotfiles-ignore'), 'rU') as f:
+    with open(join(repo_path, '.dotfiles-ignore'), 'r') as f:
         ignore = '|'.join(
             '(%s)' % (line[:-1])
             for line in f
@@ -127,7 +127,7 @@ except (IOError, OSError):
 # Figure out which files only need to be installed once
 # and then should NOT be version controlled.
 try:
-    with open(join(repo_path, '.dotfiles-once'), 'rU') as f:
+    with open(join(repo_path, '.dotfiles-once'), 'r') as f:
         install_once = '|'.join(
             '(%s)' % (line[:-1])
             for line in f

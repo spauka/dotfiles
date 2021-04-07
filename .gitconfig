@@ -11,3 +11,5 @@
 	symlinks = true
 [url "https://"]
 	insteadOf = git://
+[push]
+	default = matching

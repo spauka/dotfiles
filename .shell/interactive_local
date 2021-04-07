@@ -1,2 +1,3 @@
 # vim: ft=sh ts=4 sts=4 sw=4 et
 
+export TERM=xterm-256color
