@@ -1,3 +1,5 @@
 # vim: ft=sh ts=4 sts=4 sw=4 et
 
 export TERM=xterm-256color
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export XAUTHORITY="/mnt/c/Users/spauka/.Xauthority"
