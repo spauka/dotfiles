@@ -1,8 +1,9 @@
 [diff]
     color = True
-
 [merge]
     tool = meld
+[pull]
+    ff = only
 [user]
 	email = spauka@gmail.com
 	name = Sebastian Pauka
