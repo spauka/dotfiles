@@ -168,6 +168,8 @@ for line in files.split('\0'):
             if exists(inst):
                 move(inst, tmp_dir)
             copyfile(source, inst)
+            # Set the path to ignored in git
+            get_output("git update-index --assume-unchanged {}".format(line))
         continue
 
     # Ignore files which do not need to be installed
