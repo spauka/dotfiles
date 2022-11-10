@@ -3,3 +3,5 @@
 # Expressions are regular expressions
 \.ssh
 bin
+\.shell\\login_local
+\.shell\\interactive_local
