@@ -12,6 +12,3 @@ if [ "-z $DISPLAY" -a "! -z $SSH_ASKPASS" ]; then
     unset SSH_ASKPASS
 fi
 
-# Add rpi paths
-pathappend /opt/vc/bin
-
