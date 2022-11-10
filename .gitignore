@@ -13,3 +13,8 @@
 
 # Ignore temporary files created by vim
 /.vim/.netrwhist
+
+# Ignore local files
+/.shell/login_local
+/.shell/interactive_local
+
