@@ -12,19 +12,6 @@ if [ "-z $DISPLAY" -a "! -z $SSH_ASKPASS" ]; then
     unset SSH_ASKPASS
 fi
 
-# MacPorts Installer addition on 2019-12-13_at_23:19:09: adding an appropriate PATH variable for use with MacPorts.
-pathprepend /opt/local/bin PATH
-pathprepend /opt/local/sbin PATH
-pathprepend /opt/local/lib/postgresql13/bin PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
+# Add rpi paths
+pathappend /opt/vc/bin
 
-# Add local manpath
-export MANPATH="/opt/local/share/man:/usr/share/man:/Library/Apple/usr/share/man:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man"
-
-# MacPorts Installer addition on 2019-12-13_at_23:19:09: adding an appropriate MANPATH variable for use with MacPorts.
-pathprepend /opt/local/share/man MANPATH
-pathprepend /opt/local/libexec/gnubin
-# Finished adapting your MANPATH environment variable for use with MacPorts.
-
-# TeX install
-pathprepend /Library/TeX/texbin
