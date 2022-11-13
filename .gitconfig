@@ -5,12 +5,16 @@
 [pull]
     ff = only
 [user]
-	email = spauka@gmail.com
-	name = Sebastian Pauka
+    email = spauka@gmail.com
+    name = Sebastian Pauka
 [core]
-	excludesfile = ~/.gitignore_usr
-	symlinks = true
+    excludesfile = ~/.gitignore_usr
+    symlinks = true
+    packedGitLimit = 512m # around 50% of JVM heap
+    packedGitOpenFiles = 8192 # don't forget to configure ulimit
+    streamFileThreshold = 256m # avoids pathological inflate
+    deltaBaseCacheLimit = 50m
 [url "https://"]
-	insteadOf = git://
+    insteadOf = git://
 [push]
-	default = matching
+    default = matching

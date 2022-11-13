@@ -1,22 +1,3 @@
 # vim: ft=sh ts=4 sts=4 sw=4 et
 . ~/.shell/login
 
-##
-# Your previous /Users/spauka/.zprofile file was backed up as /Users/spauka/.zprofile.macports-saved_2019-12-13_at_23:19:09
-##
-
-# MacPorts Installer addition on 2019-12-13_at_23:19:09: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-
-# MacPorts Installer addition on 2019-12-13_at_23:19:09: adding an appropriate MANPATH variable for use with MacPorts.
-export MANPATH="/opt/local/share/man:$MANPATH"
-# Finished adapting your MANPATH environment variable for use with MacPorts.
-
-
-# MacPorts Installer addition on 2020-12-30_at_10:46:03: adding an appropriate DISPLAY variable for use with MacPorts.
-if [ -z ${DISPLAY+x} ]; then
-    export DISPLAY=:0
-fi
-# Finished adapting your DISPLAY environment variable for use with MacPorts.
