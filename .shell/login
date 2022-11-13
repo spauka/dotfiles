@@ -40,6 +40,7 @@ pathprepend ~/bin PATH
 pathprepend ~/.local/bin PATH
 pathprepend ~/share/man MANPATH
 pathprepend ~/.local/share/man MANPATH
+pathprepend "" MANPATH # Use mandb paths as well
 pathprepend ~/lib LD_LIBRARY_PATH
 pathprepend ~/include CPATH
 
