@@ -6,15 +6,13 @@ export BASH_IT="${HOME}/.bash_it"
 # location /.bash_it/themes/
 export BASH_IT_THEME='doubletime'
 
-# Color red if we are root
-if [ "$EUID" -ne 0 ]
-    export THEME_PROMPT_HOST_COLOR="$bold_red"
-fi
-
-
 # Load Bash It
 . $BASH_IT/bash_it.sh
 
-. ~/.shell/interactive
+# Color red if we are root
+if [ "$EUID" -eq 0 ]; then
+    export THEME_PROMPT_HOST_COLOR="$bold_red"
+fi
 
+. ~/.shell/interactive
 
