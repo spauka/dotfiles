@@ -17,4 +17,6 @@ if [ -t 0 ]; then
     fi
 fi
 
+export INPUTRC=~/.inputrc
+
 ssource ~/.shell/interactive_local
