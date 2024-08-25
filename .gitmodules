@@ -10,3 +10,6 @@
 [submodule ".vim/bundle-available/nerdtree"]
 	path = .vim/bundle-available/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
+[submodule ".alacritty/themes"]
+	path = .alacritty/themes
+	url = git@github.com:alacritty/alacritty-theme.git
