@@ -13,5 +13,7 @@ if [ "-z $DISPLAY" -a "! -z $SSH_ASKPASS" ]; then
 fi
 
 # Add rust to path
-. $HOME/.cargo/env
+if [ -d "$HOME/.cargo" ]; then
+    . $HOME/.cargo/env
+fi
 
