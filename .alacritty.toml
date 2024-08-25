@@ -1,0 +1,23 @@
+import = [
+    "~/.alacritty/themes/themes/solarized_osaka.toml"
+]
+
+[font]
+size = 11.0
+[font.normal]
+family = "Source Code Pro"
+style = "Regular"
+[font.bold]
+family = "Source Code Pro"
+style = "Bold"
+[font.bold_italic]
+family = "Source Code Pro"
+style = "Bold Italic"
+[font.italic]
+family = "Source Code Pro"
+style="Italic"
+
+[keyboard]
+bindings = [
+   { key = "n", mods = "Control|Shift", action = "SpawnNewInstance" }
+]
