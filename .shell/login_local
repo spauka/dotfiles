@@ -12,3 +12,6 @@ if [ "-z $DISPLAY" -a "! -z $SSH_ASKPASS" ]; then
     unset SSH_ASKPASS
 fi
 
+# Add rust to path
+. $HOME/.cargo/env
+

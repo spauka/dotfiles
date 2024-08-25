@@ -35,7 +35,7 @@ fi
 
 ssource ~/.shell/login_local
 
-# Path settings
+# Path setting
 pathprepend ~/bin PATH
 pathprepend ~/.local/bin PATH
 pathprepend ~/share/man MANPATH
