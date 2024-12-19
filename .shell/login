@@ -44,6 +44,9 @@ pathprepend "" MANPATH # Use mandb paths as well
 pathprepend ~/lib LD_LIBRARY_PATH
 pathprepend ~/include CPATH
 
+# Set pipx path
+export PIPX_BIN_DIR=~/bin
+
 # The current directory should never be in $PATH
 pathremove . PATH
 pathremove "" PATH
