@@ -42,6 +42,8 @@ pathprepend ~/share/man MANPATH
 pathprepend ~/.local/share/man MANPATH
 pathprepend "" MANPATH # Use mandb paths as well
 pathprepend ~/lib LD_LIBRARY_PATH
+pathprepend ~/.local/lib LD_LIBRARY_PATH
+pathprepend ~/.local/lib/x86_64-unknown-linux-gnu LD_LIBRARY_PATH
 pathprepend ~/include CPATH
 
 # Set pipx path

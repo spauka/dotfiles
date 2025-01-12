@@ -13,3 +13,6 @@
 [submodule ".alacritty/themes"]
 	path = .alacritty/themes
 	url = git@github.com:alacritty/alacritty-theme.git
+[submodule ".pyenv"]
+	path = .pyenv
+	url = git@github.com:pyenv/pyenv.git
