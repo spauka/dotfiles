@@ -81,7 +81,6 @@ def retry(
                         e.__class__.__name__,
                         retry_count,
                         wait_time,
-                        exc_info=e,
                     )
                     sleep(wait_time)
                 else:
