@@ -44,11 +44,16 @@ pathprepend "" MANPATH # Use mandb paths as well
 pathprepend ~/lib LD_LIBRARY_PATH
 pathprepend ~/.local/lib LD_LIBRARY_PATH
 pathprepend ~/.local/lib/x86_64-unknown-linux-gnu LD_LIBRARY_PATH
+pathprepend ~/.local/include CPATH
 pathprepend ~/include CPATH
+export LIBRARY_PATH=${LD_LIBRARY_PATH}
 
 # Set python build options
 export PYTHON_CONFIGURE_OPTS='--enable-optimizations --with-lto'
 export PYTHON_CFLAGS='-march=native -mtune=native'
+if command -v clang >/dev/null; then
+    export PYTHON_CONFIGURE_OPTS="$PYTHON_CONFIGURE_OPTS CC=clang"
+fi
 
 # Set pipx path
 export PIPX_BIN_DIR=~/bin
