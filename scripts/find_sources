@@ -1,0 +1,4 @@
+#!/bin/bash
+
+dpkg-query -f '${Package}\n' -W | xargs -I % sh -c 'echo % $(apt-cache madison % | grep "Packages" | head -n1 | cut -d"|" -f3 | cut -d" " -f2)'
+
