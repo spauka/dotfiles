@@ -50,7 +50,8 @@ export LIBRARY_PATH=${LD_LIBRARY_PATH}
 
 # Set python build options
 export PYTHON_CONFIGURE_OPTS='--enable-optimizations --with-lto'
-export PYTHON_CFLAGS='-march=native -mtune=native'
+export PYTHON_CFLAGS='-march=native -mtune=native -mllvm -tail-dup-pred-size=5000'
+export PYTHON_LDFLAGS='-fuse-ld=lld -Wl,-mllvm -Wl,-tail-dup-pred-size=5000'
 if command -v clang >/dev/null; then
     export PYTHON_CONFIGURE_OPTS="$PYTHON_CONFIGURE_OPTS CC=clang"
 fi
