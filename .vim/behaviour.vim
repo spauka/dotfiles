@@ -30,6 +30,9 @@ set shiftwidth=4
 set autoindent
 set copyindent
 
+" Strip trailing whitespace
+autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> %s/\s\+$//e
+
 " Omnicomplete
 set ofu=syntaxcomplete#Complete
 set completeopt=longest,menuone

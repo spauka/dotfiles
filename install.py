@@ -7,8 +7,16 @@ from os.path import (
 )
 from shutil import copy, copyfile, move
 import re
-from subprocess import CalledProcessError
+from subprocess import CalledProcessError, run
 import sys
+
+def run_command(command: list[str] | str):
+    """
+    Run the command and return the output
+    """
+    shell = isinstance(command, str)
+    result = subprocess.run(command, shell=shell, capture_output=True, text=True)
+    return result.stdout
 
 def get_output(command):
     """ Run the given command and return the output of the command. """
