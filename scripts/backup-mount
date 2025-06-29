@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Retrieve password from keyvault
+KEY_NAME="$1-backup-key"
+az login --identity -o none
+RESTIC_PASSWORD=$(az keyvault secret show --vault-name "restic-backup-keys" --name "$KEY_NAME" | jq -r ".value")
+RETVAL=$?
+if [ $RETVAL -ne 0 ]; then
+    echo "Failed to get key $KEY_NAME from keyvault"
+    exit $RETVAL
+fi
+
+# Update restic
+~/backup/restic self-update
+RESTIC_PASSWORD=$RESTIC_PASSWORD AZURE_ACCOUNT_NAME=spaukabackup ~/backup/restic -r "azure:$1:/" mount mount --no-lock
