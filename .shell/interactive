@@ -1,8 +1,5 @@
 # vim: ft=sh ts=4 sts=4 sw=4 et
 if [ -t 0 ]; then
-    # other users shouldn't be able to message by default
-    mesg n
-
     # enable colours
     if [ `tput colors` -ge 8 ]; then
         export GREP_COLOR='mt=37;45'
