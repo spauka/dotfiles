@@ -46,11 +46,12 @@ pathprepend ~/.local/lib LD_LIBRARY_PATH
 pathprepend ~/.local/lib/x86_64-unknown-linux-gnu LD_LIBRARY_PATH
 pathprepend ~/.local/include CPATH
 pathprepend ~/include CPATH
+pathprepend ~/.local/lib/cmake CMAKE_MODULE_PATH
 export LIBRARY_PATH=${LD_LIBRARY_PATH}
 
 # Set python build options
 export PYTHON_CONFIGURE_OPTS='--enable-optimizations --with-lto --with-openssl-rpath=auto'
-export PYTHON_CFLAGS='-march=native+dotprod+crypto -mtune=native -mllvm -tail-dup-pred-size=5000 -fPIC -fPIE'
+export PYTHON_CFLAGS='-march=native -mtune=native -mllvm -tail-dup-pred-size=5000 -fPIC -fPIE'
 export PYTHON_LDFLAGS='-L/usr/local/lib -fuse-ld=lld -Wl,-mllvm -Wl,-tail-dup-pred-size=5000'
 if command -v clang >/dev/null; then
     export PYTHON_CONFIGURE_OPTS="$PYTHON_CONFIGURE_OPTS CC=clang CXX=clang++"
