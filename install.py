@@ -9,8 +9,9 @@ from shutil import copy, copyfile, move
 import re
 from subprocess import CalledProcessError, run
 import sys
+from typing import Union
 
-def run_command(command: list[str] | str):
+def run_command(command: Union[list[str], str]):
     """
     Run the command and return the output
     """
